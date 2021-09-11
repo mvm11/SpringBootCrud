@@ -8,6 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/personas")
 public class PersonaRestController {
@@ -15,9 +17,16 @@ public class PersonaRestController {
     @Autowired
     private InterfaceServicesPersona service;
 
-    @GetMapping(value = "/l")
-    public Iterable<Persona>listarPersonas(){
+    // Listar
+
+    @GetMapping(value = "/")
+    List<Persona> Personas(){
         return service.List();
+    }
+    // listar por ID
+    @GetMapping(value = "/{id}")
+    public ResponseEntity<Persona> listById(@PathVariable int id) {
+        return ResponseEntity.status(HttpStatus.OK).body(getByIdPersona.getById(id));
     }
 
     // Crear, Guardar
