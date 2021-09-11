@@ -19,7 +19,7 @@ public class PersonaRestController {
 
     // Listar
     @GetMapping(value = "/")
-    List<Persona> Personas(){
+    public List<Persona> Personas(){
         return service.List();
     }
     // listar por ID
@@ -36,5 +36,11 @@ public class PersonaRestController {
     @PutMapping(value = "/{id}")
     ResponseEntity<Persona> replacePersona(@RequestBody Persona persona, @PathVariable int id){
         return new ResponseEntity<>(service.update(persona, id), HttpStatus.OK);
+    }
+    //Eliminar
+    @DeleteMapping("/{id}")
+    ResponseEntity deletePersona(@PathVariable int id){
+        service.delete(id);
+        return new ResponseEntity(HttpStatus.NO_CONTENT);
     }
 }

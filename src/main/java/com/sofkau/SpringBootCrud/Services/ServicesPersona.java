@@ -36,7 +36,7 @@ public class ServicesPersona implements InterfaceServicesPersona{
 
     @Override
     public void delete(int id) {
-
+        data.delete(new Persona(id));
     }
 
     @Override
