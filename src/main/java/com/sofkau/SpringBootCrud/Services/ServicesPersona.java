@@ -2,6 +2,7 @@ package com.sofkau.SpringBootCrud.Services;
 
 import com.sofkau.SpringBootCrud.Entity.Persona;
 import com.sofkau.SpringBootCrud.Repository.InterfaceRepositoryPersona;
+import com.sofkau.SpringBootCrud.configuration.exception.BadRequestException;
 import com.sofkau.SpringBootCrud.configuration.exception.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,6 +32,9 @@ public class ServicesPersona implements InterfaceServicesPersona{
 
     @Override
     public Persona save(Persona persona) {
+        if(persona.getName() == null || persona.getName().isEmpty() || persona.getAge() == null || persona.getAge().isEmpty()){
+            throw new BadRequestException("Por favor ingresa el nombre y la edad de la persona");
+        }
         return data.save(persona);
     }
 
