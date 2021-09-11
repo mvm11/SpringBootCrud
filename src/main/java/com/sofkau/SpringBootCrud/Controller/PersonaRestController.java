@@ -28,14 +28,14 @@ public class PersonaRestController {
         return ResponseEntity.status(HttpStatus.OK).body(service.ListById(id));
     }
     // Crear, Guardar
-    @PostMapping("/g")
+    @PostMapping("/")
     ResponseEntity<Persona> newPersona(@RequestBody Persona Persona){
         return new ResponseEntity<>(service.save(Persona), HttpStatus.CREATED);
     }
     // Actualizar
-    @PutMapping(value = "/{id}")
-    ResponseEntity<Persona> replacePersona(@RequestBody Persona persona, @PathVariable int id){
-        return new ResponseEntity<>(service.update(persona, id), HttpStatus.OK);
+    @PutMapping("/{id}")
+    ResponseEntity<Persona> replacePersona(@RequestBody Persona newPersona, @PathVariable int id){
+        return new ResponseEntity<>(service.update(newPersona, id), HttpStatus.OK);
     }
     //Eliminar
     @DeleteMapping("/{id}")

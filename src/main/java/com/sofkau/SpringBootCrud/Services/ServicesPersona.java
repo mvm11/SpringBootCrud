@@ -40,14 +40,14 @@ public class ServicesPersona implements InterfaceServicesPersona{
     }
 
     @Override
-    public Persona update(Persona persona, int id) {
+    public Persona update(Persona newPersona, int id) {
         return
                 data.findById(id)
                         .map(
-                                p ->{
-                                    p.setName(persona.getName());
-                                    p.setAge(persona.getAge());
-                                    return data.save(p);
+                                persona ->{
+                                    persona.setName(newPersona.getName());
+                                    persona.setAge(newPersona.getAge());
+                                    return data.save(persona);
                                 }
                         ).get();
     }
