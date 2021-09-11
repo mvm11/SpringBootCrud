@@ -3,9 +3,11 @@ package com.sofkau.SpringBootCrud.Services;
 import com.sofkau.SpringBootCrud.Entity.Persona;
 import com.sofkau.SpringBootCrud.Repository.InterfaceRepositoryPersona;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class ServicesPersona implements InterfaceServicesPersona{
 
     @Autowired
@@ -23,7 +25,7 @@ public class ServicesPersona implements InterfaceServicesPersona{
 
     @Override
     public Persona save(Persona persona) {
-        return null;
+        return data.save(persona);
     }
 
     @Override
