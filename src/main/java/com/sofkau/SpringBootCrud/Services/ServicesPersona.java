@@ -2,10 +2,12 @@ package com.sofkau.SpringBootCrud.Services;
 
 import com.sofkau.SpringBootCrud.Entity.Persona;
 import com.sofkau.SpringBootCrud.Repository.InterfaceRepositoryPersona;
+import com.sofkau.SpringBootCrud.configuration.exception.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ServicesPersona implements InterfaceServicesPersona{
@@ -20,7 +22,11 @@ public class ServicesPersona implements InterfaceServicesPersona{
 
     @Override
     public Persona ListById(int id) {
-        return null;
+        Optional<Persona> persona = data.findById(id);
+        if(persona.isEmpty()){
+            throw new NotFoundException("La persona no existe");
+        }
+        return persona.get();
     }
 
     @Override

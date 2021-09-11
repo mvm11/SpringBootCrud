@@ -23,10 +23,11 @@ public class PersonaRestController {
     List<Persona> Personas(){
         return service.List();
     }
+
     // listar por ID
     @GetMapping(value = "/{id}")
     public ResponseEntity<Persona> listById(@PathVariable int id) {
-        return ResponseEntity.status(HttpStatus.OK).body(getByIdPersona.getById(id));
+        return ResponseEntity.status(HttpStatus.OK).body(service.ListById(id));
     }
 
     // Crear, Guardar
