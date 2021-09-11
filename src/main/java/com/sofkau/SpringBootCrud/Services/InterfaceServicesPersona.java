@@ -10,5 +10,5 @@ public interface InterfaceServicesPersona {
     public Persona ListById(int id);
     public Persona save(Persona persona);
     public void delete(int id);
-    public Persona update(Persona persona);
+    public Persona update(Persona persona, int id);
 }
